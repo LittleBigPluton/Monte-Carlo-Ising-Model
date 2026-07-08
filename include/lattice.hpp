@@ -6,11 +6,11 @@
 
 class Lattice{
 protected:
+  int lattice_length; //Lattice size
+public:
   std::vector<int> spins; //To store spins for each point
   std::vector<std::vector<int>> neighbours; // To store nearest neighbours of each spin
-  int length; //Lattice size
   int grid_points; //Grid points
-public:
   void initialize();
   void nearest_neighbour();
 };

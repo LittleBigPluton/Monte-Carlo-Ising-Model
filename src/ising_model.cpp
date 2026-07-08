@@ -11,6 +11,11 @@
 //Construct a suitable data layout for spins with grid points
 void Ising::discrete_spin_generator(std::mt19937& generator, bool randomize,const std::string& spin)
 {
+// Clean spin vector to prevent over write
+spins.clear();
+spins.reserve(grid_points);
+// Define uniform distribution
+std::uniform_int_distribution<int> distribution(0, 1);
 //Define spin values
 std::vector<int> values {-1,1};
 //Initialize spin value as up, cold configuration.
@@ -18,7 +23,7 @@ int spin_value = 1;
 //For hot/randomized configuration
 if(randomize==true || spin == "hot"){
   for(int i{0};i<grid_points;i++)
-    spins.push_back(values[rand()%2]);
+    spins.push_back(values[distribution(generator)]);
   std::cout<<"Hot configuration spins are generated"<<"\n";
   return;}
 //For cold spin configuration
@@ -30,37 +35,22 @@ return;
 }
 
 //Energy function
-void Ising::total_energy()
+void Ising::calculate_total_energy()
 {
-  Teng=0;
+  Total_energy = 0;
   //Calculating energy between one spin and two other neighbours in different directions
   //In this case, left and upper neighbours' interactions are considering
   //H = -J*∑{S_i*S_j} - B*∑{S_i}
   //In this calculation, J = 1, Ferromagnetic, and B = 0, no external magnetic field.
-  for(int i(0);i<grid_points;++i)Teng-=spins[i]*(spins[neighbours[i][0]]
+  for(int i(0);i<grid_points;++i)Total_energy-=spins[i]*(spins[neighbours[i][0]]
                                                 +spins[neighbours[i][1]]);
 }
 
 //Magnetization density function
-void Ising::total_magnetization()
+void Ising::calculate_total_magnetization()
 {
-  Tmag=0;
+  Total_magnetization = 0;
   //Calculate total magnetization through whole grid
   //Add absolute value of each spins. It is equal to grid points at the begenning
-  for(int i : spins)Tmag+=i;
-  Tmag = abs(Tmag);
-}
-
-//Specific heat
-void Ising::specific_heat(double variance)
-{
-  //Calculate varience of the rest part
-  SH = variance/Temp/Temp/grid_points;
-}
-
-//Magnetic susceptibility
-void Ising::magnetic_susceptibility(double variance)
-{
-  //Calculate varience value of the equilibrated part
-  MS = variance/Temp/grid_points;
+  for(int i : spins)Total_magnetization+=i;
 }
