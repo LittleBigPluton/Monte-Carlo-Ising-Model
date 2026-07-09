@@ -18,6 +18,8 @@ add_library(
     src/metropolis.cpp
     src/measurements.cpp
     src/statistics.cpp
+    src/error_analysis.cpp
+    src/data_export.cpp
 )
 
 target_include_directories(
@@ -59,12 +61,12 @@ if(GSL_FOUND)
 endif()
 
 add_executable(
-    test_metropolis
-    tests/test_metropolis.cpp
+    test_error_analysis
+    tests/test_error_analysis.cpp
 )
 
 target_link_libraries(
-    test_metropolis
+    test_error_analysis
     PRIVATE
         ising_model_core
 )
