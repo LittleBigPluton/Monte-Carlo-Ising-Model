@@ -68,3 +68,7 @@ env/
 .project
 .cproject
 .settings/
+
+# Generated data files
+results/
+*.dat
