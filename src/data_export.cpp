@@ -37,6 +37,7 @@ void dataexport(
     }
 
     write << x_column << " " << y_column << "\n";
+    int monte_carlo_time = step;
 
     for (int i = start; i < length; i += step)
     {
@@ -47,6 +48,7 @@ void dataexport(
             value /= grid_points;
         }
 
-        write << i + 1 << " " << value << "\n";
+        write << monte_carlo_time << " " << value << "\n";
+        monte_carlo_time += step;
     }
 }
