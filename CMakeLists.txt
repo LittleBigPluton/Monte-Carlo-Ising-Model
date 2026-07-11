@@ -20,6 +20,7 @@ add_library(
     src/statistics.cpp
     src/error_analysis.cpp
     src/data_export.cpp
+    src/wolff_cluster.cpp
 )
 
 target_include_directories(
@@ -61,12 +62,12 @@ if(GSL_FOUND)
 endif()
 
 add_executable(
-    test_error_analysis
-    tests/test_error_analysis.cpp
+    test_wolff
+    tests/test_wolff_cluster.cpp
 )
 
 target_link_libraries(
-    test_error_analysis
+    test_wolff
     PRIVATE
         ising_model_core
 )
