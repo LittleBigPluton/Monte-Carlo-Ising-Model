@@ -62,12 +62,12 @@ if(GSL_FOUND)
 endif()
 
 add_executable(
-    test_metropolis_wolff_comparison
-    tests/test_metropolis_wolff_comparison.cpp
+    test_temperature_scan
+    tests/test_temperature_scan.cpp
 )
 
 target_link_libraries(
-    test_metropolis_wolff_comparison
+    test_temperature_scan
     PRIVATE
         ising_model_core
 )
