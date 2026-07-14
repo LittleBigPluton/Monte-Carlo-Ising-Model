@@ -21,6 +21,7 @@ add_library(
     src/error_analysis.cpp
     src/data_export.cpp
     src/wolff_cluster.cpp
+    src/hmc_xy_model.cpp
 )
 
 target_include_directories(
@@ -62,12 +63,12 @@ if(GSL_FOUND)
 endif()
 
 add_executable(
-    test_temperature_scan
-    tests/test_temperature_scan.cpp
+    test_hmc_xy_temperature_scan
+    tests/test_hmc_xy_temperature_scan.cpp
 )
 
 target_link_libraries(
-    test_temperature_scan
+    test_hmc_xy_temperature_scan
     PRIVATE
         ising_model_core
 )
