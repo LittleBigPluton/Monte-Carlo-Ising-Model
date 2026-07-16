@@ -1,4 +1,4 @@
-# # Monte Carlo Spin Models
+# Monte Carlo Spin Models
 
 C++ implementation of Monte Carlo simulations for 2D lattice spin models, including the Ising model with Metropolis and Wolff updates and the classical XY model with Hybrid Monte Carlo. The repository currently includes:
 
