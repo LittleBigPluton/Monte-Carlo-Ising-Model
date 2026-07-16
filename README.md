@@ -1,6 +1,6 @@
-# Monte Carlo Ising Model
+# # Monte Carlo Spin Models
 
-C++ implementation of the 2D Ising and classical XY models using Metropolis, Wolff cluster and Hybrid Monte Carlo (HMC) algorithms, with statistical error analysis and a Python plotting workflow for the resulting data. The repository currently includes:
+C++ implementation of Monte Carlo simulations for 2D lattice spin models, including the Ising model with Metropolis and Wolff updates and the classical XY model with Hybrid Monte Carlo. The repository currently includes:
 
 - a reusable lattice geometry layer,
 - the 2D Ising model,
